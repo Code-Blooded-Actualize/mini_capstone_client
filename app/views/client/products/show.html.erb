@@ -1,0 +1,20 @@
+<h1><%= @product["name"] %></h1>
+
+<% if @product["discounted"] %>
+  <h5>On Sale!!! - <%= @product["formatted"]["price"] %></h5>
+<% else %>
+  <h5><%= @product["formatted"]["price"] %></h5>
+<% end %>
+
+<h3><%= @product["description"] %></h3>
+
+<div>
+  <a href="/client/products/<%= @product["id"] %>/edit">Edit</a>
+  <a href="/client/products/<%= @product["id"] %>" data-method="delete">Delete</a>
+</div>
+
+<% @product["images"].each do |image| %>
+  <img src="<%= image["url"] %>" alt="<%= image["alt"] %>">
+<% end %>
+
+<h6>Supplied By: <%= @product["supplier"]["name"] %></h6>
